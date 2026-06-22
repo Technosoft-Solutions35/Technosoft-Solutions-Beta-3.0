@@ -373,44 +373,56 @@ body {
 }
 
 /* =======================================================
-   SOPORTE DE MODO OSCURO (Windows y Android)
+   SOPORTE DE MODO OSCURO (VERSIÓN CORREGIDA GLOBAL)
    ======================================================= */
 @media (prefers-color-scheme: dark) {
     
-    /* 1. Cambiamos el cuadro blanco por un gris diferenciado que contraste con el fondo general */
+    /* 1. Cuadro de presentación con el gris diferenciado */
     .cuadro-presentacion {
-        background-color: rgba(30, 38, 34, 0.95) !important; /* Gris oscuro con un leve matiz verde */
-        border-color: #00ff66 !important; /* Forzamos el borde al verde brillante del logo */
+        background-color: rgba(30, 38, 34, 0.95) !important;
+        border-color: #00ff66 !important;
         box-shadow: 0 0 15px rgba(0, 255, 102, 0.2), 0 15px 35px rgba(0, 0, 0, 0.8) !important;
     }
 
-    /* 2. Transformamos los textos principales al verde brillante neón del banner */
+    /* 2. FORZAR VERDE BRILLANTE: Para todos los títulos principales y secundarios invisibles */
     .cuadro-presentacion h1,
+    .cuadro-presentacion h2,
+    .cuadro-presentacion h3,
+    .contenido-introduccion h2,
+    .contenido-introduccion h3,
     .grupo-campo label,
-    .contenido-introduccion h2 {
+    .tarjeta-curso h3,
+    .paquete-especial h2 {
         color: #00ff66 !important;
         text-shadow: 0 0 8px rgba(0, 255, 102, 0.4) !important;
-        border-color: #00ff66 !important; /* Para las líneas decorativas de los títulos */
+        border-color: #00ff66 !important; /* Corrige las líneas decorativas a la izquierda */
     }
 
-    /* 3. Textos secundarios e introductorios en un tono claro que no canse la vista */
+    /* 3. FORZAR TEXTO CLARO: Para párrafos, listas, subtítulos y textos fuertes (strong) */
+    .cuadro-presentacion p,
     .cuadro-presentacion .subtitulo,
     .contenido-introduccion p,
     .contenido-introduccion ul li,
-    .contenido-introduccion ul li strong {
-        color: #c8d6cd !important; /* El mismo gris claro que usas en las tarjetas de cursos */
+    .contenido-introduccion ul li strong,
+    .descripcion-curso,
+    .paquete-especial p {
+        color: #c8d6cd !important; /* Gris claro de alta legibilidad */
     }
 
-    /* 4. Adaptación del Formulario de la pestaña Contratar */
+    /* 4. Asegurar que las viñetas personalizadas (■) no se queden oscuras */
+    .contenido-introduccion ul li::before {
+        color: #00ff66 !important;
+    }
+
+    /* 5. Adaptación para los campos de formularios */
     .grupo-campo input, 
     .grupo-campo select, 
     .grupo-campo textarea {
-        background-color: #121814 !important; /* Fondo ultra oscuro para los inputs */
+        background-color: #121814 !important;
         border-color: #2d3d35 !important;
         color: #ffffff !important;
     }
 
-    /* El foco de los campos cuando el usuario va a escribir */
     .grupo-campo input:focus, 
     .grupo-campo select:focus, 
     .grupo-campo textarea:focus {
@@ -418,7 +430,6 @@ body {
         box-shadow: 0 0 10px rgba(0, 255, 102, 0.3) !important;
     }
 
-    /* Ajustamos las opciones del selector en móviles Android para que se lean bien */
     .grupo-campo select option {
         background-color: #121814 !important;
         color: #ffffff !important;
