@@ -373,48 +373,74 @@ body {
 }
 
 /* =======================================================
-   SOPORTE DE MODO OSCURO (VERSIÓN CORREGIDA GLOBAL)
+   SOPORTE DE MODO OSCURO (VERSIÓN 3.0 - CON TARJETAS)
    ======================================================= */
 @media (prefers-color-scheme: dark) {
     
-    /* 1. Cuadro de presentación con el gris diferenciado */
+    /* 1. Cuadro de presentación principal (Gris diferenciado) */
     .cuadro-presentacion {
         background-color: rgba(30, 38, 34, 0.95) !important;
         border-color: #00ff66 !important;
         box-shadow: 0 0 15px rgba(0, 255, 102, 0.2), 0 15px 35px rgba(0, 0, 0, 0.8) !important;
     }
 
-    /* 2. FORZAR VERDE BRILLANTE: Para todos los títulos principales y secundarios invisibles */
+    /* 2. Forzar Verde Brillante en títulos del cuadro principal */
     .cuadro-presentacion h1,
     .cuadro-presentacion h2,
     .cuadro-presentacion h3,
     .contenido-introduccion h2,
     .contenido-introduccion h3,
     .grupo-campo label,
-    .tarjeta-curso h3,
     .paquete-especial h2 {
         color: #00ff66 !important;
         text-shadow: 0 0 8px rgba(0, 255, 102, 0.4) !important;
-        border-color: #00ff66 !important; /* Corrige las líneas decorativas a la izquierda */
+        border-color: #00ff66 !important;
     }
 
-    /* 3. FORZAR TEXTO CLARO: Para párrafos, listas, subtítulos y textos fuertes (strong) */
+    /* 3. Textos del cuadro principal en gris claro legible */
     .cuadro-presentacion p,
     .cuadro-presentacion .subtitulo,
     .contenido-introduccion p,
     .contenido-introduccion ul li,
     .contenido-introduccion ul li strong,
-    .descripcion-curso,
     .paquete-especial p {
-        color: #c8d6cd !important; /* Gris claro de alta legibilidad */
+        color: #c8d6cd !important;
     }
 
-    /* 4. Asegurar que las viñetas personalizadas (■) no se queden oscuras */
+    /* Viñetas del cuadro principal */
     .contenido-introduccion ul li::before {
         color: #00ff66 !important;
     }
 
-    /* 5. Adaptación para los campos de formularios */
+    /* =======================================================
+       4. CORRECCIÓN EXCLUSIVA PARA LAS TARJETAS DE SERVICIOS
+       ======================================================= */
+    /* Forzamos a que las tarjetas mantengan su metalizado oscuro original */
+    .tarjeta-curso, 
+    .cuadrilla-cursos > div {
+        background: linear-gradient(135deg, #1a221d 0%, #121814 100%) !important;
+        background-color: #121814 !important;
+        border-color: #00ff66 !important; /* Borde verde brillante activo */
+        box-shadow: 0 0 15px rgba(0, 255, 102, 0.3) !important;
+    }
+
+    /* Forzamos a que el texto dentro de las tarjetas sea oscuro/claro correcto y no se herede el del cuadro blanco */
+    .tarjeta-curso p,
+    .tarjeta-curso .descripcion-curso,
+    .cuadrilla-cursos > div p,
+    .cuadrilla-cursos > div span {
+        color: #e2ede6 !important; /* Texto claro nítido sobre fondo negro */
+    }
+
+    .tarjeta-curso h3,
+    .cuadrilla-cursos > div h3 {
+        color: #00ff66 !important; /* Título de la tarjeta en verde */
+        text-shadow: 0 0 5px rgba(0, 255, 102, 0.3) !important;
+    }
+
+    /* =======================================================
+       5. Formularios e Inputs (Pestaña Contratar)
+       ======================================================= */
     .grupo-campo input, 
     .grupo-campo select, 
     .grupo-campo textarea {
